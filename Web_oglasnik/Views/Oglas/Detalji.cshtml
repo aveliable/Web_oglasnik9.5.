@@ -1,0 +1,39 @@
+﻿@using Web_oglasnik.Models
+@model Oglas
+@{
+    ViewBag.Title = "Detalji";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string stanje = "";
+    if (@Model.Stanje == "N")
+    {
+        stanje = "Novo";
+    }
+    else
+    {
+        stanje = "Rabljeno";
+    }
+
+}
+
+<h2>@Model.Naslov</h2>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Stanje:</strong>
+    </div>
+    <div class="col-md-10">
+        @stanje
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>Godište:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.Godiste
+    </div>
+</div>
+<br />
+
+@Html.ActionLink("Povratak na oglase", "Popis", "Oglas", null, new { @class = "btn btn-primary btn-sm" })

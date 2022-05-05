@@ -1,0 +1,26 @@
+﻿@using Web_oglasnik.Models
+@model Oglas
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<strong>Jeste li sigurni da želite obrisati oglas @Model.Naslov?</strong>
+
+<br />
+<br />
+@using (Html.BeginForm("Brisi", "Oglas"))
+{
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-danger">
+        <span class="glyphicon glyphicon-ok" aria-hidden="false">
+        </span>
+        Izbriši
+    </button>
+
+    <br />
+    <br />
+
+    @Html.ActionLink("Odustani", "Popis");
+}

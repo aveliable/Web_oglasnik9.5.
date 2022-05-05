@@ -1,0 +1,70 @@
+﻿@using Web_oglasnik.Models
+@model Oglas
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{ if (ViewBag.Novi)
+    {
+        <h2>Kreiranje novog oglasa</h2>
+    }
+    else
+    {
+        <h2>Ažuriranje oglasa</h2>
+        <h3>@Model.Naslov</h3>
+    }
+}
+@using (Html.BeginForm("Azuriraj", "Oglas", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Ispravite Podatke");
+
+    if (!ViewBag.Novi)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.ID, new { disabled = true, @class = "from-control" })
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        @Html.LabelFor(model => model.Naslov, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.Naslov, new { @class = "from-control" })
+            @Html.ValidationMessageFor(model => model.Naslov, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Godiste, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.Godiste, new { @class = "from-control" })
+            @Html.ValidationMessageFor(model => model.Godiste, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Stanje, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            <label class="radio-inline">
+                @Html.RadioButtonFor(model => model.Stanje, "N") Novo
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(model => model.Stanje, "R") Rabljeno
+            </label>
+            @Html.ValidationMessageFor(model => model.Stanje)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="false"></span>
+                Spremi
+            </button>
+        </div>
+    </div>
+    @Html.ActionLink("Povratak bez spremanja", "Popis", "Oglas")
+}
