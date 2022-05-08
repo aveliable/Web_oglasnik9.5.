@@ -11,5 +11,6 @@ namespace Web_oglasnik.Models
     public class BazaDbContext : DbContext
     {
         public DbSet<Oglas> PopisOglasa { get; set; }
+        public DbSet<Korisnik> PopisKorisnika { get; set; }
     }
 }

@@ -18,17 +18,33 @@
                 </button>
                 @Html.ActionLink("Web oglasnik", "Index", "Oglas", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <li>@Html.ActionLink("Početna", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Oglasi", "Popis", "Oglas")</li>
-                </ul>
+            @if (Session["ID"] != null)
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>@Html.ActionLink("Početna", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Oglasi", "Popis", "Oglas")</li>
+                    </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Prijava", "Prijava", "Oglas")</li>
-                    <li>@Html.ActionLink("Registracija", "Registracija", "Oglas")</li>
-                </ul>
-            </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Odjava", "Odjava", "Korisnik")</li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>@Html.ActionLink("Početna", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Oglasi", "Popis", "Oglas")</li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Prijava", "Login", "Korisnik")</li>
+                        <li>@Html.ActionLink("Registracija", "Register", "Korisnik")</li>
+                    </ul>
+                </div>
+            }
         </div>
     </div>
     <div class="container body-content">

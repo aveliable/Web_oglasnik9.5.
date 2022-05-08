@@ -34,8 +34,8 @@ namespace Web_oglasnik.Models
 
         public void AzurirajOglas(Oglas oglas)
         {
-            int studentIndex = lista.FindIndex(s => s.Naslov == oglas.Naslov);
-            lista[studentIndex] = oglas;
+            int oglasIndex = lista.FindIndex(s => s.Naslov == oglas.Naslov);
+            lista[oglasIndex] = oglas;
         }
     }
 }

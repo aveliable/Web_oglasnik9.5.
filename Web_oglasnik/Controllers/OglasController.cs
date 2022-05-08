@@ -122,16 +122,5 @@ namespace Web_oglasnik.Controllers
             return View("BrisiStatus");
         }
 
-        public ActionResult Prijava()
-        {
-            ViewBag.Title = "Prijava";
-            return View("Prijava");
-        }
-
-        public ActionResult Registracija()
-        {
-            ViewBag.Title = "Registracija";
-            return View("Registracija");
-        }
     }
 }
